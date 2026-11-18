@@ -21,7 +21,7 @@
     <form id="form-login">
       <label>Senha <input type="password" id="senha" autocomplete="current-password" required></label>
       <button class="dlg__submit" type="submit">Entrar</button>
-      <p id="login-erro" class="dlg__error" hidden>Senha incorreta.</p>
+      <p id="login-erro" class="dlg__error" hidden>Senha Incorreta.</p>
     </form>
   </main>
 
@@ -45,21 +45,21 @@
   <dialog id="dlg-pedido" class="dlg">
     <button type="button" class="dlg__x" data-close aria-label="Fechar">&times;</button>
     <form id="form-pedido">
-      <h2>Pagamento e entrega</h2>
+      <h2>Pagamento e Entrega</h2>
       <p class="dlg__intro" id="ped-quem"></p>
       <div class="dlg__row">
         <label>Valor combinado (R$) <input name="valor" type="number" min="0" step="0.01" required></label>
-        <label>Forma de pagamento
+        <label>Forma de Pagamento
           <select name="pagamento"><option>Pix</option><option>Transferência</option><option>Cartão</option><option>Dinheiro</option><option>Outro</option></select>
         </label>
       </div>
       <div class="dlg__row">
-        <label>Situação do pagamento
+        <label>Situação do Pagamento
           <select name="statusPag"><option>Pendente</option><option>Pago</option></select>
         </label>
-        <label>CEP de entrega <input name="cepEntrega" inputmode="numeric" maxlength="9" required></label>
+        <label>CEP de Entrega <input name="cepEntrega" inputmode="numeric" maxlength="9" required></label>
       </div>
-      <label>Situação da entrega
+      <label>Situação da Entrega
         <select name="statusEntrega"><option>Aguardando</option><option>Enviado</option><option>Entregue</option></select>
       </label>
       <label>Observações <input name="obs" maxlength="200"></label>
