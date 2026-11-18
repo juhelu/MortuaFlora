@@ -97,7 +97,7 @@
     });
     var info = est
       ? '<p class="adm__nota">ID do documento de estoque: <code>' + esc(est.id) + "</code>" +
-        (S.estoqueId === est.id ? " (já está no config.js)" : " &larr; copie para <code>estoqueId</code> em js/config.js para o site público mostrar Disponível / Lista de espera.") + "</p>"
+        (S.estoqueId === est.id ? " (já está no CFG.js)" : " &larr; copie para <code>estoqueId</code> em CFG.js para o site público mostrar Disponível / Lista de espera.") + "</p>"
       : '<p class="adm__nota">O estoque ainda não foi criado. Defina as quantidades e salve.</p>';
     return info + tabela(["Planta", "Quantidade"], linhas) + '<p><button id="salvar-estoque">Salvar estoque</button></p>';
   }
