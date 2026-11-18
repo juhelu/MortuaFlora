@@ -122,13 +122,13 @@
   <dialog id="dlg-interesse" class="dlg" aria-labelledby="dlg-titulo">
     <button type="button" class="dlg__x" data-close aria-label="Fechar">&times;</button>
     <form id="form-interesse" novalidate autocomplete="on">
-      <h2 id="dlg-titulo">Consultar disponibilidade</h2>
+      <h2 id="dlg-titulo">Consultar Disponibilidade</h2>
       <p class="dlg__intro">Nossa equipe avalia cada pedido e entra em contato. Valores são informados somente após essa etapa.</p>
 
-      <label>Planta de interesse
+      <label>Planta Selecionada
         <select name="planta" required></select>
       </label>
-      <label>Nome completo
+      <label>Nome Completo
         <input name="nome" type="text" autocomplete="name" required>
       </label>
       <div class="dlg__row">
@@ -150,26 +150,26 @@
           <input name="cep" type="text" inputmode="numeric" placeholder="00000-000" required>
         </label>
       </div>
-      <label>Finalidade do cultivo
+      <label>Finalidade do Cultivo
         <select name="finalidade" required>
           <option value="">Selecione…</option>
-          <option>Coleção pessoal</option>
-          <option>Pesquisa científica</option>
-          <option>Conservação e produção de sementes</option>
+          <option>Coleção Pessoal</option>
+          <option>Pesquisa Científica</option>
+          <option>Conservação e Produção de Sementes</option>
           <option>Outra</option>
         </select>
       </label>
-      <label>Possui estufa ou ambiente controlado adequado?
+      <label>Possui Ambiente Adequado / Estufa?
         <select name="estufa" required>
           <option value="">Selecione…</option>
           <option>Sim</option>
           <option>Não</option>
-          <option>Em construção</option>
+          <option>Em Construção</option>
         </select>
       </label>
 
       <!-- armadilha para robôs: pessoas não veem este campo -->
-      <div class="hp" aria-hidden="true"><label>Não preencha <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <div class="hp" aria-hidden="true"><label>Não Preencha <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
 
       <label class="dlg__check">
         <input name="lgpd" type="checkbox" required>
@@ -181,7 +181,7 @@
     </form>
 
     <div id="form-ok" class="dlg__ok" hidden>
-      <h2>Pedido recebido</h2>
+      <h2>Pedido Recebido</h2>
       <p>Registramos seu interesse em <strong id="ok-planta"></strong>. Nossa equipe entrará em contato pelo celular ou e-mail informados.</p>
       <p class="dlg__protocolo" id="ok-protocolo"></p>
       <button type="button" class="dlg__submit" data-close>Fechar</button>
