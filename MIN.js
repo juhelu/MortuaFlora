@@ -22,7 +22,7 @@
     el.setAttribute("data-id", p.id);
     var foto = p.foto
       ? '<img src="' + p.foto + '" alt="' + esc(p.nome) + ' (' + esc(p.cientifico) + ')" loading="lazy">'
-      : '<div class="plant__soon"><img src="assets/img/logo.png" alt=""><span>foto em breve</span></div>';
+      : '<div class="plant__soon"><img src="L0G.png" alt=""><span>foto em breve</span></div>';
     el.innerHTML =
       '<div class="plant__photo">' + foto +
         '<div class="plant__overlay">' +
