@@ -111,9 +111,10 @@
       var params = {
         protocolo: r.id || "", planta: doc.plantaNome, nome: doc.nome, celular: doc.celular, email: doc.email,
         to_email: doc.email, to_name: doc.nome, local: doc.estado + " / " + doc.pais, cep: doc.cep,
-        finalidade: doc.finalidade, estufa: doc.estufa, email_equipe: S.email
+        finalidade: doc.finalidade, estufa: doc.estufa, reply_to: doc.email
       };
-      enviarEmail(S.emailjs && S.emailjs.templateEquipe, Object.assign({}, params, { to_email: S.email }));
+      // o destinatário da equipe fica fixo dentro do template no EmailJS (não aparece no código do site)
+      enviarEmail(S.emailjs && S.emailjs.templateEquipe, params);
       enviarEmail(S.emailjs && S.emailjs.templateCliente, params);
       document.getElementById("ok-protocolo").textContent = r.id ? "Protocolo: " + r.id : "";
       document.getElementById("ok-planta").textContent = doc.plantaNome;
