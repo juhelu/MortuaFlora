@@ -1,3 +1,4 @@
+/* © 2026 Júlia Ramos – Mortua Flora. Todos os direitos reservados. */
 (function () {
   "use strict";
   var S = window.SITE, api = window.MF.api;
@@ -58,12 +59,15 @@
   }
 
   function telaInteresses() {
+    var cont = {};
+    porTipo("interesse").forEach(function (i) { var k = i.email + "|" + i.plantaId; cont[k] = (cont[k] || 0) + 1; });
     var linhas = porTipo("interesse").map(function (i) {
+      var rep = cont[i.email + "|" + i.plantaId];
       var ped = dados.filter(function (p) { return p.tipo === "pedido" && p.interesseId === i.id; })[0];
       var opts = STATUS.map(function (s) { return "<option" + (s === i.status ? " selected" : "") + ">" + s + "</option>"; }).join("");
       var zap = waLink(i.celular, "Olá, " + i.nome.split(" ")[0] + "! Aqui é a Mortua Flora, sobre o seu interesse em " + i.plantaNome + ".");
       return "<tr><td>" + data(i.criadoEm) + "</td><td><strong>" + esc(i.nome) + "</strong><br>" + esc(i.email) + "<br>" +
-        '<a href="' + zap + '" target="_blank" rel="noopener">' + cel(i.celular) + "</a></td><td>" + esc(i.plantaNome) + "</td><td>" +
+        '<a href="' + zap + '" target="_blank" rel="noopener">' + cel(i.celular) + "</a></td><td>" + esc(i.plantaNome) + (rep > 1 ? '<br><span class="adm__tag">repetido (' + rep + "x)</span>" : "") + "</td><td>" +
         esc(i.finalidade) + "<br>Estufa: " + esc(i.estufa) + "</td><td>" + esc(i.estado) + "/" + esc(i.pais) + "<br>" + cep(i.cep) + "</td>" +
         '<td><select data-st="' + i.id + '">' + opts + "</select></td><td>" +
         (ped ? "Pedido " + esc(ped.statusPag) + "<br>" : "") +
