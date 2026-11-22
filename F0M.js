@@ -1,8 +1,3 @@
-/* =====================================================
-   Formulário "Consultar disponibilidade"
-   - o site só ESCREVE no banco (nunca lê dados de clientes)
-   - 1 documento "interesse" por pedido, com os dados mínimos do cliente
-   ===================================================== */
 (function () {
   "use strict";
   var S = window.SITE, api = window.MF.api;
@@ -61,12 +56,20 @@
   }
 
   /* ---------- antirrobô: honeypot + tempo mínimo + intervalo entre envios ---------- */
+  /* pedidos enviados neste navegador dentro da janela de horas */
+  function enviosRecentes() {
+    var lim = Date.now() - (S.janelaHoras || 24) * 3600 * 1000, a = [];
+    try { a = JSON.parse(localStorage.getItem("mf_envios") || "[]"); } catch (e) {}
+    return a.filter(function (t) { return t > lim; });
+  }
+
   function bloqueado() {
     if (form.elements.website.value) return true;
     if ((Date.now() - abertoEm) / 1000 < S.minSegundosPreenchimento) return "Só um instante e clique em Enviar novamente.";
     try {
       var ult = Number(localStorage.getItem("mf_ult_envio") || 0);
       if ((Date.now() - ult) / 1000 < S.intervaloEntreEnvios) return "Aguarde alguns segundos antes de enviar outro pedido.";
+      if (enviosRecentes().length >= (S.maxEnvios || 2)) return "Você atingiu o limite de pedidos neste navegador nas últimas " + (S.janelaHoras || 24) + " horas. Para novos pedidos, fale conosco pelo WhatsApp.";
     } catch (e) {}
     return false;
   }
@@ -107,7 +110,10 @@
       lgpdVersao: "1.0"
     };
     api.create(doc).then(function (r) {
-      try { localStorage.setItem("mf_ult_envio", String(Date.now())); } catch (e) {}
+      try {
+        localStorage.setItem("mf_ult_envio", String(Date.now()));
+        var env = enviosRecentes(); env.push(Date.now()); localStorage.setItem("mf_envios", JSON.stringify(env));
+      } catch (e) {}
       var params = {
         protocolo: r.id || "", planta: doc.plantaNome, nome: doc.nome, celular: doc.celular, email: doc.email,
         to_email: doc.email, to_name: doc.nome, local: doc.estado + " / " + doc.pais, cep: doc.cep,
