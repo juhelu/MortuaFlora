@@ -5,211 +5,54 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Júlia Ramos">
-  <meta name="copyright" content="© 2026 Júlia Ramos – Mortua Flora. Todos os direitos reservados.">
-  <title>Mortua Flora</title>
-  <meta name="description" content="Mortua Flora: plantas exóticas, guias de jardinagem, ferramentas e o primeiro pronto-socorro de plantas de São Paulo.">
-  <link rel="icon" href="L0G.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Previsões Climáticas | Mortua Flora</title>
+  <meta name="description" content="Veja se o clima da sua região é propício para o plantio de cada espécie, com previsão de 7 dias e recomendações.">
+  <link rel="icon" href="../L0G.png">
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-
-  <!-- ============ CABEÇALHO ============ -->
   <header class="topbar">
-    <a class="topbar__logo" href="#topo" aria-label="Mortua Flora - início">
-      <img src="L0G.png" alt="Mortua Flora">
-    </a>
-    <nav class="topbar__nav" aria-label="Menu principal">
-      <a href="#plantas">Plantas</a>
-      <a href="#guias">Guias</a>
-      <a href="#ferramentas">Ferramentas</a>
-      <a href="#hospital">Hospital</a>
-      <a class="topbar__contact" id="link-fale-conosco" href="#" target="_blank" rel="noopener">Fale conosco</a>
-    </nav>
+    <a class="topbar__logo" href="../" aria-label="Voltar ao site"><img src="../L0G.png" alt="Mortua Flora"></a>
+    <nav class="topbar__nav"><a href="../">&larr; Voltar ao site</a></nav>
   </header>
 
-  <main id="topo">
-
-    <!-- ============ PLANTAS ============ -->
-    <section id="plantas" class="section" aria-label="Plantas">
-      <div class="plants plants--featured" id="plantas-destaque"></div>
-      <div class="plants plants--grid" id="plantas-grade"></div>
-      <p class="hint hint--touch">Toque em uma planta para consultar a disponibilidade.</p>
-    </section>
-
-    <!-- ============ GUIAS ============ -->
-    <section id="guias" class="section" aria-label="Guias">
-      <div class="guides">
-        <a class="guide" href="GBI.pdf" target="_blank" rel="noopener">
-          <img src="GBI.png" alt="Capa do Guia Básico para Iniciantes em Jardinagem">
-          <span class="guide__title">Básico</span>
-          <span class="guide__sub">Para Iniciantes em Jardinagem</span>
-        </a>
-        <div class="guides__divider" aria-hidden="true"></div>
-        <a class="guide" href="GBE.pdf" target="_blank" rel="noopener">
-          <img src="GBE.png" alt="Capa do Guia de Plantas Exóticas">
-          <span class="guide__title">Avançado</span>
-          <span class="guide__sub">Para Plantio Especializado</span>
-        </a>
+  <main class="section prv">
+    <div class="prv__head">
+      <img src="../NUV.png" alt="" class="prv__icon">
+      <div>
+        <h1>Previsões climáticas</h1>
+        <p>Escolha a cidade onde você pretende cultivar e a planta. Mostramos a previsão dos próximos 7 dias (temperatura, umidade, chuva, luz e solo) e o que fazer para cuidar dela no clima da sua região. Funciona para qualquer lugar do mundo.</p>
       </div>
-    </section>
+    </div>
 
-    <!-- ============ FERRAMENTAS ============ -->
-    <section id="ferramentas" class="section" aria-label="Ferramentas">
-      <ul class="tools">
-        <li><img src="TSR.png" alt=""><span>Tesoura</span></li>
-        <li><img src="PNC.png" alt=""><span>Pinça</span></li>
-        <li><img src="ACH.png" alt=""><span>Ancinho</span></li>
-        <li><img src="LVS.png" alt=""><span>Luvas</span></li>
-        <li><img src="BFD.png" alt=""><span>Borrifador</span></li>
-        <li><img src="RGD.png" alt=""><span>Regador</span></li>
-        <li><img src="VS0.png" alt=""><span>Vaso</span></li>
-        <li><img src="PAP.png" alt=""><span>Pá</span></li>
-      </ul>
-    </section>
-
-    <!-- ============ HOSPITAL ============ -->
-    <section id="hospital" class="section hospital" aria-label="Hospital de plantas">
-      <img class="hospital__icon" src="HPL.png" alt="Pronto-socorro de plantas">
-      <div class="hospital__body">
-        <p class="hospital__text">
-          Nos disponibilizamos para salvar todas as plantas em estado crítico e emergencial.<br>
-          Sejam elas comuns ou exóticas, serão cuidadas desde que tenham vida restando.<br>
-          Em nossas mãos, nenhuma planta morrerá.
-        </p>
-        <div class="hospital__address-row">
-          <a class="hospital__address" id="link-mapa" href="#" target="_blank" rel="noopener" aria-label="Abrir endereço no Google Maps">
-            <img src="PIN.png" alt="">
-            <address>
-              Avenida Professor Luiz Ignácio Anhaia Mello, 1363<br>
-              Vila Prudente<br>
-              São Paulo - SP
-            </address>
-          </a>
-          <span class="hospital__24h">24H</span>
-        </div>
+    <form id="form-busca" class="prv__form" autocomplete="off">
+      <label for="cidade">1. Cidade</label>
+      <div class="prv__linha">
+        <input id="cidade" type="text" maxlength="80" placeholder="Ex.: São Paulo, Lisboa, Tokyo" required>
+        <button type="submit">Buscar</button>
       </div>
-    </section>
+    </form>
+    <ul id="lista-lugares" class="prv__lugares" hidden></ul>
+    <p id="lugar-escolhido" class="prv__lugar"></p>
 
-    <!-- ============ PREVISÕES CLIMÁTICAS (abre em outra guia) ============ -->
-    <section id="previsoes" class="section previsoes" aria-label="Previsões climáticas">
-      <a class="previsoes__link" href="previsao/" target="_blank" rel="noopener">
-        <img class="previsoes__icon" src="NUV.png" alt="">
-        <div class="previsoes__body">
-          <h2>Previsões climáticas</h2>
-          <p>Para verificar se sua região tem clima propício para o plantio, disponibilizamos previsões meteorológicas e recomendações com base no clima.</p>
-          <span class="previsoes__cta">Consultar previsão &rarr;</span>
-        </div>
-      </a>
-    </section>
+    <div class="prv__form">
+      <label for="sel-planta">2. Planta</label>
+      <select id="sel-planta"></select>
+    </div>
+
+    <p id="prv-msg" class="prv__msg" role="status"></p>
+    <section id="resultado" class="prv__resultado" hidden aria-live="polite"></section>
   </main>
 
-  <!-- ============ RODAPÉ ============ -->
   <footer class="footer">
-    <a class="footer__item footer__mail" href="mailto:mortuaflora@gmail.com">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5"/><path d="M3 6l9 7 9-7"/></svg>
-      <span>mortuaflora@gmail.com</span>
-    </a>
-    <div class="footer__right">
-      <a class="footer__item" id="link-instagram" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg>
-        <span>MortuaFlora</span>
-      </a>
-      <div class="footer__phones">
-        <a class="footer__item" id="link-telefone" href="#">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 5.8 5.8l1.4-2.2 4.3 1.7V18a2 2 0 0 1-2 2A15.5 15.5 0 0 1 3 5.5a2 2 0 0 1 2-2z"/></svg>
-          <span>(11) 4293-9080</span>
-        </a>
-        <a class="footer__item" id="link-whatsapp" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z"/><path d="M9 8.5c.3 3 2.5 5.2 5.5 6l1.2-1.3-2-1-.8.7a4 4 0 0 1-1.8-1.8l.7-.8-1-2z" fill="currentColor" stroke="none"/></svg>
-          <span>(11) 94533-4323</span>
-        </a>
-      </div>
-      <a class="footer__item footer__privacy" href="privacidade/" target="_blank" rel="noopener"><span>Privacidade</span></a>
-      <img class="footer__logo" src="L0G.png" alt="">
-    </div>
-    <p class="footer__copy">© 2026 Júlia Ramos · Mortua Flora. Todos os direitos reservados. Projeto acadêmico.</p>
+    <a class="footer__item" href="../"><span>Mortua Flora</span></a>
+    <span class="footer__credit">Dados meteorológicos: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a></span>
+    <img class="footer__logo" src="../L0G.png" alt="">
   </footer>
 
-
-
-  <!-- ============ FORMULÁRIO: CONSULTAR DISPONIBILIDADE ============ -->
-  <dialog id="dlg-interesse" class="dlg" aria-labelledby="dlg-titulo">
-    <button type="button" class="dlg__x" data-close aria-label="Fechar">&times;</button>
-    <form id="form-interesse" novalidate autocomplete="on">
-      <h2 id="dlg-titulo">Consultar Disponibilidade</h2>
-      <p class="dlg__intro">Nossa equipe avalia cada pedido e entra em contato. Valores são informados somente após essa etapa.</p>
-
-      <label>Planta Selecionada
-        <select name="planta" required></select>
-      </label>
-      <label>Nome Completo
-        <input name="nome" type="text" autocomplete="name" required>
-      </label>
-      <div class="dlg__row">
-        <label>Celular (com DDD)
-          <input name="celular" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" required>
-        </label>
-        <label>E-mail
-          <input name="email" type="email" autocomplete="email" required>
-        </label>
-      </div>
-      <div class="dlg__row dlg__row--3">
-        <label>País
-          <input name="pais" type="text" value="Brasil" required>
-        </label>
-        <label>Estado
-          <input name="estado" type="text" maxlength="40" placeholder="SP" required>
-        </label>
-        <label>CEP
-          <input name="cep" type="text" inputmode="numeric" placeholder="00000-000" required>
-        </label>
-      </div>
-      <label>Finalidade do Cultivo
-        <select name="finalidade" required>
-          <option value="">Selecione…</option>
-          <option>Coleção Pessoal</option>
-          <option>Pesquisa Científica</option>
-          <option>Conservação e Produção de Sementes</option>
-          <option>Outra</option>
-        </select>
-      </label>
-      <label>Possui Ambiente Adequado / Estufa?
-        <select name="estufa" required>
-          <option value="">Selecione…</option>
-          <option>Sim</option>
-          <option>Não</option>
-          <option>Em Construção</option>
-        </select>
-      </label>
-
-      <!-- armadilha para robôs: pessoas não veem este campo -->
-      <div class="hp" aria-hidden="true"><label>Não Preencha <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
-
-      <label class="dlg__check">
-        <input name="lgpd" type="checkbox" required>
-        <span>Li e aceito o <a href="privacidade/" target="_blank" rel="noopener">aviso de privacidade</a> e autorizo o uso destes dados para análise do meu pedido.</span>
-      </label>
-
-      <p id="form-msg" class="dlg__error" role="alert" hidden></p>
-      <button type="submit" class="dlg__submit">Enviar pedido</button>
-    </form>
-
-    <div id="form-ok" class="dlg__ok" hidden>
-      <h2>Pedido Recebido</h2>
-      <p>Registramos seu interesse em <strong id="ok-planta"></strong>. Nossa equipe entrará em contato pelo celular ou e-mail informados.</p>
-      <p class="dlg__protocolo" id="ok-protocolo"></p>
-      <button type="button" class="dlg__submit" data-close>Fechar</button>
-    </div>
-  </dialog>
-
-  <!-- Scripts -->
-  <script src="CFG.js"></script>
-  <script src="PLS.js"></script>
-  <script src="APP.js"></script>
-  <script src="MIN.js"></script>
-  <script src="F0M.js"></script>
+  <script src="../PLS.js"></script>
+  <script src="../CLM.js"></script>
+  <script src="../PRV.js"></script>
 </body>
 </html>
