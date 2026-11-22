@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- © 2026 Júlia Ramos – Mortua Flora. Todos os direitos reservados. -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Aviso de Privacidade | Mortua Flora</title>
+  <link rel="icon" href="L0G.png">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="topbar__logo" href="index.html" aria-label="Voltar ao início"><img src="L0G.png" alt="Mortua Flora"></a>
+    <nav class="topbar__nav"><a href="index.html">&larr; Voltar ao site</a></nav>
+  </header>
+
+  <main class="section legal">
+    <h1>Aviso de Privacidade</h1>
+    <p class="legal__meta">Versão 1.0 · Lei Geral de Proteção de Dados (Lei 13.709/2018)</p>
+
+    <p><strong>Projeto acadêmico.</strong> A Mortua Flora é um projeto acadêmico que simula a comercialização de espécies raras. Nenhuma venda real é realizada e nenhum pagamento é cobrado pelo site. Mesmo assim, tratamos os dados como se fossem reais.</p>
+
+    <h2>1. Quem é responsável pelos seus dados</h2>
+    <p>Controladora: <span data-f="responsavel"></span> – <span data-f="nomeFantasia"></span> (nome fantasia).<br>
+    Contato para assuntos de privacidade: <a data-f-mail="emailPrivacidade"></a></p>
+
+    <h2>2. Quais dados coletamos</h2>
+    <p>Apenas o necessário para avaliar o seu pedido e identificar você:</p>
+    <ul>
+      <li><strong>Identificação e contato:</strong> nome completo, celular e e-mail.</li>
+      <li><strong>Localização:</strong> país, estado e CEP (para avaliar a entrega).</li>
+      <li><strong>Perfil de cultivo:</strong> finalidade e se possui estufa adequada.</li>
+      <li><strong>Pedido:</strong> planta de interesse, data e hora, e o seu aceite deste aviso.</li>
+      <li><strong>Depois do contato, se houver negociação:</strong> valor, forma de pagamento, situação do pagamento e da entrega, e o CEP de destino.</li>
+    </ul>
+    <p>Não pedimos CPF, documentos, dados de cartão nem endereço completo no primeiro contato.</p>
+
+    <h2>3. Para que usamos</h2>
+    <ul>
+      <li>Identificar quem pediu e evitar pedidos falsos, repetidos ou feitos por robôs.</li>
+      <li>Avaliar o perfil do interessado, já que as espécies são raras ou ameaçadas, e entrar em contato.</li>
+      <li>Reservar a planta e registrar pagamento e entrega.</li>
+      <li>Enviar a confirmação do pedido e avisos sobre ele.</li>
+    </ul>
+    <p>Não usamos seus dados para publicidade e não os vendemos.</p>
+
+    <h2>4. Base legal</h2>
+    <p>Consentimento (art. 7º, I, da LGPD), dado quando você marca a caixa de aceite, e adoção de providências preliminares a pedido seu, relacionadas a uma possível contratação (art. 7º, V).</p>
+
+    <h2>5. Com quem compartilhamos</h2>
+    <p>Apenas com a equipe da Mortua Flora. Para o funcionamento técnico, os dados ficam armazenados na plataforma de banco de dados educacional da Technoworks (Google Firebase/Firestore) e, se ativado, são enviados por um serviço de e-mail (EmailJS) para a confirmação ao cliente e o aviso à equipe. Esses prestadores podem processar dados em servidores fora do Brasil.</p>
+
+    <h2>6. Por quanto tempo guardamos</h2>
+    <p>Pedidos sem andamento são excluídos em até 12 meses. Registros de pagamento e entrega são mantidos pelo prazo necessário para cumprir obrigações legais. Ao fim do projeto acadêmico, os dados de teste serão apagados.</p>
+
+    <h2>7. Seus direitos (art. 18)</h2>
+    <p>Você pode pedir a qualquer momento: confirmação de que tratamos seus dados, acesso, correção, anonimização ou exclusão, portabilidade, informações sobre compartilhamento e a revogação do consentimento. Escreva para <a data-f-mail="emailPrivacidade"></a> informando o e-mail usado no pedido. Respondemos em até 15 dias.</p>
+
+    <h2>8. Segurança</h2>
+    <p>Coletamos o mínimo possível, restringimos o acesso da equipe por senha e não exibimos dados de clientes no site público. Por se tratar de um ambiente educacional, nenhuma plataforma é totalmente livre de risco; em caso de incidente que possa afetar você, comunicaremos você e a ANPD, como a lei exige.</p>
+
+    <h2>9. Previsões climáticas</h2>
+    <p>A página de previsões não pede dados pessoais e não grava nada: nem a cidade, nem a planta escolhida. Para obter a previsão, o navegador envia o nome da cidade digitado e as coordenadas dela ao serviço Open-Meteo, que, como qualquer site, recebe o endereço IP de quem acessa.</p>
+
+    <h2>10. Alterações</h2>
+    <p>Se este aviso mudar, a nova versão será publicada nesta página.</p>
+  </main>
+
+  <footer class="footer"><a class="footer__item" href="index.html"><span>Mortua Flora</span></a><img class="footer__logo" src="L0G.png" alt=""></footer>
+
+  <script src="CFG.js"></script>
+  <script>
+    (function () {
+      var S = window.SITE;
+      document.querySelectorAll("[data-f]").forEach(function (e) { e.textContent = S[e.getAttribute("data-f")]; });
+      document.querySelectorAll("[data-f-mail]").forEach(function (e) {
+        var m = S[e.getAttribute("data-f-mail")]; e.textContent = m; e.href = "mailto:" + m;
+      });
+    })();
+  </script>
+</body>
+</html>
