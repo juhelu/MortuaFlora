@@ -1,3 +1,4 @@
+/* © 2026 Júlia Ramos – Mortua Flora. Todos os direitos reservados. */
 :root {
   --bg: #250b0d;
   --bar: #66674a;
@@ -293,3 +294,75 @@ ul { list-style: none; }
 .adm__table input[type=number] { width: 80px; }
 
 @media (max-width: 520px) { .dlg__row, .dlg__row--3 { grid-template-columns: 1fr; } }
+
+
+/* ================= BANNER: PREVISÕES CLIMÁTICAS ================= */
+.previsoes { padding-top: 24px; padding-bottom: 24px; }
+.previsoes__link { display: flex; align-items: center; gap: clamp(16px, 3vw, 34px); text-decoration: none; color: var(--text); padding: 18px 24px; border-radius: 14px; transition: background .25s; }
+.previsoes__link:hover, .previsoes__link:focus-visible { background: #2d1013; outline: none; }
+.previsoes__icon { width: clamp(96px, 16vw, 150px); height: auto; flex: 0 0 auto; transition: transform .3s; }
+.previsoes__link:hover .previsoes__icon { transform: translateY(-4px); }
+.previsoes__body h2 { font-family: var(--font-body); font-weight: 400; font-size: 1.6rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.previsoes__body p { font-size: .95rem; color: var(--text); max-width: 60ch; }
+.previsoes__cta { display: inline-block; margin-top: 12px; font-size: .8rem; color: var(--gold); text-decoration: underline; }
+.footer__copy { flex: 0 0 100%; text-align: center; font-size: .68rem; opacity: .75; margin-top: 2px; }
+.footer__credit { font-size: .75rem; }
+.footer__credit a { color: #fff; }
+@media (max-width: 520px) { .previsoes__link { flex-direction: column; text-align: center; } }
+
+/* ================= PÁGINA DE PREVISÃO ================= */
+.prv { max-width: 1100px; }
+.prv__head { display: flex; align-items: center; gap: 26px; margin-bottom: 28px; }
+.prv__icon { width: 120px; flex: 0 0 auto; }
+.prv h1 { font-family: var(--font-body); font-weight: 400; font-size: 1.7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.prv__head p { font-size: .9rem; max-width: 70ch; }
+.prv__form { margin: 0 0 14px; max-width: 560px; }
+.prv__form label { display: block; font-size: .8rem; color: var(--text-dim); margin-bottom: 4px; }
+.prv__linha { display: flex; gap: 10px; }
+.prv input, .prv select { width: 100%; padding: 10px 12px; font: inherit; font-size: .9rem; background: #1a0708; color: #f1e6d4; border: 1px solid #5a3a3d; border-radius: 6px; }
+.prv input:focus, .prv select:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.prv button { cursor: pointer; font: inherit; font-weight: 700; font-size: .85rem; padding: 10px 18px; background: var(--bar); color: #fff; border: 1px solid var(--gold); border-radius: 6px; white-space: nowrap; }
+.prv button:hover { background: var(--gold); color: var(--bg); }
+.prv__lugares { max-width: 560px; margin: 0 0 12px; display: flex; flex-direction: column; gap: 6px; }
+.prv__lugares button { width: 100%; text-align: left; background: #2d1013; font-weight: 400; }
+.prv__lugar { color: var(--gold); font-size: .85rem; margin-bottom: 14px; }
+.prv__msg { min-height: 1.4em; font-size: .85rem; color: var(--gold); margin-bottom: 10px; }
+.prv__msg.is-bad { color: #f0a0a0; }
+.prv__resultado { margin-top: 18px; }
+.prv__resultado h3 { font-size: .95rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); margin: 30px 0 10px; font-weight: 400; }
+
+.prv-topo { padding: 18px 22px; border-radius: 12px; border-left: 6px solid; background: #2d1013; margin-bottom: 18px; }
+.prv-topo--ok { border-color: #9fd18b; } .prv-topo--warn { border-color: #e6c070; } .prv-topo--bad { border-color: #e08a8a; }
+.prv-topo__l { font-size: .8rem; color: var(--text-dim); }
+.prv-topo h2 { font-family: var(--font-body); font-size: 1.4rem; font-weight: 700; color: #f1e6d4; margin: 2px 0; }
+.prv-topo__s { font-size: .8rem; color: var(--text-dim); }
+
+.prv-dias { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
+.prv-dia { background: #2d1013; border-radius: 10px; padding: 10px 8px; border-top: 4px solid #5a3a3d; }
+.prv-dia--ok { border-top-color: #9fd18b; } .prv-dia--warn { border-top-color: #e6c070; } .prv-dia--bad { border-top-color: #e08a8a; }
+.prv-dia h4 { font-size: .78rem; text-transform: capitalize; color: var(--gold); margin-bottom: 8px; text-align: center; font-weight: 700; }
+.prv-chip { display: grid; grid-template-columns: 1fr auto; column-gap: 4px; padding: 5px 0; border-bottom: 1px solid #3a1a1d; font-size: .68rem; }
+.prv-chip:last-child { border-bottom: 0; }
+.prv-chip__l { grid-column: 1 / -1; color: var(--text-dim); font-size: .62rem; text-transform: uppercase; letter-spacing: .05em; }
+.prv-chip__v { color: #f1e6d4; }
+.prv-chip__s { font-weight: 700; text-align: right; }
+.prv-chip--ok .prv-chip__s { color: #9fd18b; } .prv-chip--warn .prv-chip__s { color: #e6c070; } .prv-chip--bad .prv-chip__s { color: #e08a8a; } .prv-chip--na .prv-chip__s { color: var(--text-dim); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.prv-dicas { display: flex; flex-direction: column; gap: 8px; }
+.prv-dica { display: flex; gap: 10px; padding: 10px 14px; background: #2d1013; border-radius: 8px; font-size: .85rem; border-left: 4px solid #5a3a3d; }
+.prv-dica--ok { border-color: #9fd18b; } .prv-dica--warn { border-color: #e6c070; } .prv-dica--bad { border-color: #e08a8a; }
+.prv-dica > span:first-child { flex: 0 0 auto; }
+.prv-ficha { font-size: .85rem; display: flex; flex-direction: column; gap: 6px; }
+.prv-ficha ul { list-style: disc; padding-left: 22px; margin-top: 4px; }
+.prv-aviso { margin-top: 26px; font-size: .75rem; color: var(--text-dim); max-width: 80ch; }
+
+@media (max-width: 900px) { .prv-dias { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  .prv__head { flex-direction: column; text-align: center; }
+  .prv__linha { flex-direction: column; }
+  .prv-dias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.adm__tag { display: inline-block; margin-top: 4px; padding: 1px 7px; border-radius: 999px; background: #5a2a10; color: #ffd9a8; font-size: .68rem; }
+.prv__lugares[hidden], .prv__resultado[hidden] { display: none; }
