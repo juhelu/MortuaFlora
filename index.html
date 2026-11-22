@@ -1,8 +1,11 @@
 <!DOCTYPE html>
+<!-- © 2026 Júlia Ramos – Mortua Flora. Todos os direitos reservados. -->
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Júlia Ramos">
+  <meta name="copyright" content="© 2026 Júlia Ramos – Mortua Flora. Todos os direitos reservados.">
   <title>Mortua Flora</title>
   <meta name="description" content="Mortua Flora: plantas exóticas, guias de jardinagem, ferramentas e o primeiro pronto-socorro de plantas de São Paulo.">
   <link rel="icon" href="L0G.png">
@@ -89,11 +92,23 @@
         </div>
       </div>
     </section>
+
+    <!-- ============ PREVISÕES CLIMÁTICAS (abre em outra guia) ============ -->
+    <section id="previsoes" class="section previsoes" aria-label="Previsões climáticas">
+      <a class="previsoes__link" href="previsao/" target="_blank" rel="noopener">
+        <img class="previsoes__icon" src="NUV.png" alt="">
+        <div class="previsoes__body">
+          <h2>Previsões climáticas</h2>
+          <p>Para verificar se sua região tem clima propício para o plantio, disponibilizamos previsões meteorológicas e recomendações com base no clima.</p>
+          <span class="previsoes__cta">Consultar previsão &rarr;</span>
+        </div>
+      </a>
+    </section>
   </main>
 
   <!-- ============ RODAPÉ ============ -->
   <footer class="footer">
-    <a class="footer__item footer__mail" href="mailto:juheluani@uni9.edu.br">
+    <a class="footer__item footer__mail" href="mailto:mortuaflora@gmail.com">
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5"/><path d="M3 6l9 7 9-7"/></svg>
       <span>mortuaflora@gmail.com</span>
     </a>
@@ -112,8 +127,10 @@
           <span>(11) 94533-4323</span>
         </a>
       </div>
+      <a class="footer__item footer__privacy" href="privacidade/" target="_blank" rel="noopener"><span>Privacidade</span></a>
       <img class="footer__logo" src="L0G.png" alt="">
     </div>
+    <p class="footer__copy">© 2026 Júlia Ramos · Mortua Flora. Todos os direitos reservados. Projeto acadêmico.</p>
   </footer>
 
 
@@ -173,7 +190,7 @@
 
       <label class="dlg__check">
         <input name="lgpd" type="checkbox" required>
-        <span>Li e aceito o <a href="PVC.html" target="_blank" rel="noopener">aviso de privacidade</a> e autorizo o uso destes dados para análise do meu pedido.</span>
+        <span>Li e aceito o <a href="privacidade/" target="_blank" rel="noopener">aviso de privacidade</a> e autorizo o uso destes dados para análise do meu pedido.</span>
       </label>
 
       <p id="form-msg" class="dlg__error" role="alert" hidden></p>
