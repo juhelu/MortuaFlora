@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- © 2026 Júlia Ramos – Mortua Flora. Todos os direitos reservados. -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Júlia Ramos">
+  <title>Previsões Climáticas | Mortua Flora</title>
+  <meta name="description" content="Veja se o clima da sua região é propício para o plantio de cada espécie, com previsão de 7 dias e recomendações.">
+  <link rel="icon" href="L0G.png">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="topbar__logo" href="index.html" aria-label="Voltar ao site"><img src="L0G.png" alt="Mortua Flora"></a>
+    <nav class="topbar__nav"><a href="index.html">&larr; Voltar ao site</a></nav>
+  </header>
+
+  <main class="section prv">
+    <div class="prv__head">
+      <img src="NUV.png" alt="" class="prv__icon">
+      <div>
+        <h1>Previsões climáticas</h1>
+        <p>Escolha a cidade onde você pretende cultivar e a planta. Mostramos a previsão dos próximos 7 dias (temperatura, umidade, chuva, luz e solo) e o que fazer para cuidar dela no clima da sua região. Funciona para qualquer lugar do mundo.</p>
+      </div>
+    </div>
+
+    <form id="form-busca" class="prv__form" autocomplete="off">
+      <label for="cidade">1. Cidade</label>
+      <div class="prv__linha">
+        <input id="cidade" type="text" maxlength="80" placeholder="Ex.: São Paulo, Lisboa, Tokyo" required>
+        <button type="submit">Buscar</button>
+      </div>
+    </form>
+    <ul id="lista-lugares" class="prv__lugares" hidden></ul>
+    <p id="lugar-escolhido" class="prv__lugar"></p>
+
+    <div class="prv__form">
+      <label for="sel-planta">2. Planta</label>
+      <select id="sel-planta"></select>
+    </div>
+
+    <p id="prv-msg" class="prv__msg" role="status"></p>
+    <section id="resultado" class="prv__resultado" hidden aria-live="polite"></section>
+  </main>
+
+  <footer class="footer">
+    <a class="footer__item" href="index.html"><span>Mortua Flora</span></a>
+    <span class="footer__credit">Dados meteorológicos: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a></span>
+    <img class="footer__logo" src="L0G.png" alt="">
+  </footer>
+
+  <script src="PLS.js"></script>
+  <script src="CLM.js"></script>
+  <script src="PRV.js"></script>
+</body>
+</html>
