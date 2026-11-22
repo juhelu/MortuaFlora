@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- © 2026 Júlia Ramos – Mortua Flora. Todos os direitos reservados. -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Equipe | Mortua Flora</title>
+  <link rel="icon" href="L0G.png">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin">
+  <header class="topbar">
+    <a class="topbar__logo" href="index.html" aria-label="Site"><img src="L0G.png" alt="Mortua Flora"></a>
+    <nav class="topbar__nav"><a href="index.html">&larr; Site</a><a id="sair" href="#" hidden>Sair</a></nav>
+  </header>
+
+  <!-- LOGIN -->
+  <main id="login" class="section login">
+    <h1>Área da equipe</h1>
+    <form id="form-login">
+      <label>Senha <input type="password" id="senha" autocomplete="current-password" required></label>
+      <button class="dlg__submit" type="submit">Entrar</button>
+      <p id="login-erro" class="dlg__error" hidden>Senha Incorreta.</p>
+    </form>
+  </main>
+
+  <!-- PAINEL -->
+  <main id="painel" class="section adm" hidden>
+    <p id="aviso-teste" class="adm__warn"></p>
+    <div class="adm__tabs" role="tablist">
+      <button data-tab="interesses" class="is-on">Interesses</button>
+      <button data-tab="clientes">Clientes</button>
+      <button data-tab="pedidos">Pedidos</button>
+      <button data-tab="estoque">Estoque</button>
+      <span class="adm__spacer"></span>
+      <button id="btn-atualizar" type="button">Atualizar</button>
+      <button id="btn-csv" type="button">Exportar CSV</button>
+    </div>
+    <p id="adm-msg" class="adm__msg" role="status"></p>
+    <div id="adm-conteudo"></div>
+  </main>
+
+  <!-- Registrar pagamento / entrega -->
+  <dialog id="dlg-pedido" class="dlg">
+    <button type="button" class="dlg__x" data-close aria-label="Fechar">&times;</button>
+    <form id="form-pedido">
+      <h2>Pagamento e Entrega</h2>
+      <p class="dlg__intro" id="ped-quem"></p>
+      <div class="dlg__row">
+        <label>Valor combinado (R$) <input name="valor" type="number" min="0" step="0.01" required></label>
+        <label>Forma de Pagamento
+          <select name="pagamento"><option>Pix</option><option>Transferência</option><option>Cartão</option><option>Dinheiro</option><option>Outro</option></select>
+        </label>
+      </div>
+      <div class="dlg__row">
+        <label>Situação do Pagamento
+          <select name="statusPag"><option>Pendente</option><option>Pago</option></select>
+        </label>
+        <label>CEP de Entrega <input name="cepEntrega" inputmode="numeric" maxlength="9" required></label>
+      </div>
+      <label>Situação da Entrega
+        <select name="statusEntrega"><option>Aguardando</option><option>Enviado</option><option>Entregue</option></select>
+      </label>
+      <label>Observações <input name="obs" maxlength="200"></label>
+      <button class="dlg__submit" type="submit">Salvar</button>
+    </form>
+  </dialog>
+
+  <script src="CFG.js"></script>
+  <script src="PLS.js"></script>
+  <script src="APP.js"></script>
+  <script src="ADN.js"></script>
+</body>
+</html>
