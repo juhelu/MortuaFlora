@@ -366,3 +366,8 @@ ul { list-style: none; }
 
 .adm__tag { display: inline-block; margin-top: 4px; padding: 1px 7px; border-radius: 999px; background: #5a2a10; color: #ffd9a8; font-size: .68rem; }
 .prv__lugares[hidden], .prv__resultado[hidden] { display: none; }
+
+/* ---------- proteção de imagens ---------- */
+img { -webkit-user-drag: none; user-drag: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.adm__chave { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin: 0 0 14px; padding: 10px 14px; border: 1px dashed currentColor; border-radius: 8px; font-size: .9rem; }
+@media print { body * { display: none !important; } body::before { content: "Conteúdo protegido por direitos autorais - Mortua Flora"; display: block; } }
