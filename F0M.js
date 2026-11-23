@@ -116,7 +116,7 @@
       lgpdAceite: new Date().toISOString(),
       lgpdVersao: "1.0"
     };
-    api.create(doc).then(function (r) {
+      enviar(doc).then(function (r) {
       try {
         localStorage.setItem("mf_ult_envio", String(Date.now()));
         var env = enviosRecentes(); env.push(Date.now()); localStorage.setItem("mf_envios", JSON.stringify(env));
