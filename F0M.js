@@ -83,7 +83,14 @@
       body: JSON.stringify({ service_id: c.serviceId, template_id: templateId, user_id: c.publicKey, template_params: params })
     }).catch(function () {});
   }
-
+  /* ---------- grava no banco com os dados pessoais criptografados ---------- */
+  var PESSOAIS = ["nome", "celular", "email", "pais", "estado", "cep", "finalidade", "estufa"];
+  function enviar(doc) {
+    if (!S.chavePublica || !window.MF.crip) return api.create(doc);
+    var segredo = {}, aberto = {};
+    Object.keys(doc).forEach(function (k) { if (PESSOAIS.indexOf(k) > -1) segredo[k] = doc[k]; else aberto[k] = doc[k]; });
+    return window.MF.crip.selar(S.chavePublica, segredo).then(function (t) { aberto.enc = t; return api.create(aberto); });
+  }
   form.addEventListener("submit", function (e) {
     e.preventDefault(); erro("");
     var f = form.elements;
