@@ -297,18 +297,18 @@ ul { list-style: none; }
 
 
 /* ================= BANNER: PREVISÕES CLIMÁTICAS ================= */
-.previsoes { padding-top: 24px; padding-bottom: 24px; }
-.previsoes__link { display: flex; align-items: center; gap: clamp(16px, 3vw, 34px); text-decoration: none; color: var(--text); padding: 18px 24px; border-radius: 14px; transition: background .25s; }
-.previsoes__link:hover, .previsoes__link:focus-visible { background: #2d1013; outline: none; }
-.previsoes__icon { width: clamp(96px, 16vw, 150px); height: auto; flex: 0 0 auto; transition: transform .3s; }
-.previsoes__link:hover .previsoes__icon { transform: translateY(-4px); }
+.previsoes__link { display: flex; align-items: flex-start; gap: 36px; text-decoration: none; color: inherit; }
+.previsoes__icon { width: 130px; height: auto; flex: 0 0 auto; transition: transform .3s; }
+.previsoes__link:hover .previsoes__icon, .previsoes__link:focus-visible .previsoes__icon { transform: translateY(-4px); }
+.previsoes__link:hover .previsoes__cta, .previsoes__link:focus-visible .previsoes__cta { color: #fff; }
+.previsoes__link:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
 .previsoes__body h2 { font-family: var(--font-body); font-weight: 400; font-size: 1.6rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
 .previsoes__body p { font-size: .95rem; color: var(--text); max-width: 60ch; }
 .previsoes__cta { display: inline-block; margin-top: 12px; font-size: .8rem; color: var(--gold); text-decoration: underline; }
 .footer__copy { flex: 0 0 100%; text-align: center; font-size: .68rem; opacity: .75; margin-top: 2px; }
 .footer__credit { font-size: .75rem; }
 .footer__credit a { color: #fff; }
-@media (max-width: 520px) { .previsoes__link { flex-direction: column; text-align: center; } }
+@media (max-width: 820px) { .previsoes__link { flex-direction: column; align-items: center; text-align: center; } }
 
 /* ================= PÁGINA DE PREVISÃO ================= */
 .prv { max-width: 1100px; }
