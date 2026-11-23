@@ -297,7 +297,7 @@ ul { list-style: none; }
 
 
 /* ================= BANNER: PREVISÕES CLIMÁTICAS ================= */
-.previsoes__link { display: flex; align-items: flex-start; gap: 36px; text-decoration: none; color: inherit; }
+.previsoes__link { flex-direction: row-reverse; text-align: right; }
 .previsoes__icon { width: 130px; height: auto; flex: 0 0 auto; transition: transform .3s; }
 .previsoes__link:hover .previsoes__icon, .previsoes__link:focus-visible .previsoes__icon { transform: translateY(-4px); }
 .previsoes__link:hover .previsoes__cta, .previsoes__link:focus-visible .previsoes__cta { color: #fff; }
