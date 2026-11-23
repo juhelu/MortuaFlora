@@ -21,7 +21,7 @@
   }
   function entrar() {
     $("login").hidden = true; $("painel").hidden = false; $("sair").hidden = false;
-    $("aviso-teste").hidden = !api.modoTeste;
+    $("aviso-teste").hidden = !api.modoTeste; stChave();
     carregar();
   }
   $("form-login").addEventListener("submit", function (e) {
@@ -34,10 +34,46 @@
   $("sair").addEventListener("click", function (e) { e.preventDefault(); try { sessionStorage.removeItem("mf_admin"); } catch (x) {} location.reload(); });
   try { if (sessionStorage.getItem("mf_admin") === S.adminHash) entrar(); } catch (e) {}
 
+    /* ---------- chave privada (fica só nesta aba do navegador) ---------- */
+  var chave = null;
+  try { chave = JSON.parse(sessionStorage.getItem("mf_chave") || "null"); } catch (e) {}
+  function stChave() {
+    $("chave-box").hidden = !S.chavePublica;
+    $("chave-st").textContent = chave ? "🔓 Dados liberados nesta aba." : "🔒 Dados protegidos: carregue a chave para ler.";
+  }
+  $("chave-arq").addEventListener("change", function (e) {
+    var f = e.target.files[0]; if (!f) return;
+    f.text().then(function (t) {
+      chave = JSON.parse(t);
+      try { sessionStorage.setItem("mf_chave", t); } catch (x) {}
+      stChave(); carregar();
+    }).catch(function () { msg("Arquivo de chave inválido.", true); });
+  });
+  function descriptografar(lista) {
+    return Promise.all(lista.map(function (d) {
+      if (!d.enc) return d;
+      var trancar = function () {
+        d._trancado = true;
+        var t = d.tipo === "pedido" ? { clienteNome: "🔒 trancado", clienteEmail: "🔒 " + d.id, cepEntrega: "", obs: "" }
+          : { nome: "🔒 trancado", email: "🔒 " + d.id, celular: "", pais: "", estado: "", cep: "", finalidade: "", estufa: "" };
+        return Object.assign(d, t);
+      };
+      if (!chave) return trancar();
+      return window.MF.crip.abrir(chave, d.enc).then(function (o) { return Object.assign(d, o); }).catch(trancar);
+    }));
+  }
+  function selarPedido(aberto, segredo) {
+    if (!S.chavePublica) return Promise.resolve(Object.assign(aberto, segredo));
+    return window.MF.crip.selar(S.chavePublica, segredo).then(function (t) { aberto.enc = t; return aberto; });
+  }
+  
   /* ---------- dados ---------- */
   function carregar() {
     msg("Carregando…");
-    api.list().then(function (a) { dados = a; msg(""); desenhar(); })
+    api.list().then(descriptografar).then(function (a) {
+      dados = a; desenhar();
+      msg(a.some(function (d) { return d._trancado; }) ? "Alguns registros estão trancados: carregue a chave privada (ou a chave está incorreta)." : "", true);
+    })
       .catch(function (e) { msg("Erro ao ler o banco: " + e.message, true); });
   }
   function porTipo(t) { return dados.filter(function (x) { return x.tipo === t; }).sort(function (a, b) { return String(b.criadoEm).localeCompare(String(a.criadoEm)); }); }
@@ -174,9 +210,12 @@
       valor: Number(fp.valor.value), pagamento: fp.pagamento.value, statusPag: fp.statusPag.value,
       cepEntrega: fp.cepEntrega.value.replace(/\D/g, ""), statusEntrega: fp.statusEntrega.value, obs: fp.obs.value.trim()
     };
-    var op = pedAtual.pedido
-      ? api.patch(pedAtual.pedido.id, campos)
-      : api.create(Object.assign({ tipo: "pedido", interesseId: i.id, clienteNome: i.nome, clienteEmail: i.email, plantaNome: i.plantaNome }, campos));
+    var segredo = { clienteNome: i.nome, clienteEmail: i.email, cepEntrega: campos.cepEntrega, obs: campos.obs };
+    delete campos.cepEntrega; delete campos.obs;
+    var op = selarPedido(campos, segredo).then(function (c) {
+      return pedAtual.pedido ? api.patch(pedAtual.pedido.id, c)
+        : api.create(Object.assign({ tipo: "pedido", interesseId: i.id, plantaNome: i.plantaNome }, c));
+    });
     op.then(function () { dlg.close(); msg("Pedido salvo."); carregar(); }).catch(function (er) { msg("Erro: " + er.message, true); });
   });
 
