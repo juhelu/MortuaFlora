@@ -31,6 +31,12 @@
   <!-- PAINEL -->
   <main id="painel" class="section adm" hidden>
     <p id="aviso-teste" class="adm__warn"></p>
+    <form id="chave-box" class="adm__chave" hidden>
+      <label>Chave privada (arquivo mortuaflora-chave-privada.json)
+        <input type="file" id="chave-arq" accept=".json,application/json">
+      </label>
+      <span id="chave-st"></span>
+    </form>
     <div class="adm__tabs" role="tablist">
       <button data-tab="interesses" class="is-on">Interesses</button>
       <button data-tab="clientes">Clientes</button>
@@ -72,7 +78,9 @@
 
   <script src="CFG.js"></script>
   <script src="PLS.js"></script>
+  <script src="CRP.js"></script>
   <script src="APP.js"></script>
+  <script src="PRT.js"></script>
   <script src="ADN.js"></script>
 </body>
 </html>
